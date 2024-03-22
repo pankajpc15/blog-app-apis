@@ -4,35 +4,37 @@ import java.util.List;
 
 import com.backed.blog.entities.Post;
 import com.backed.blog.payloads.PostDto;
+import com.backed.blog.payloads.PostResponse;
+
 
 public interface PostService {
 
 	// create
 
-	Post createPost(PostDto postdto,Integer userId,Integer categoryId);
+	PostDto createPost(PostDto postdto,Integer userId,Integer categoryId);
 
 	// update
-	Post updatePost(PostDto postdto, Integer postId);
+	PostDto updatePost(PostDto postdto, Integer postId);
 
 	void deletePost(Integer postId);
 
 	// get all post
 
-	List<Post> getAllPost();
+	PostResponse getAllPost(Integer pageNumber,Integer pageSize,String sortBy,String sortDir);
 
 	// get singal post
 
-	Post getPostById(Integer postId);
+	PostDto getPostById(Integer postId);
 
 	// get all post by category
 
-	List<Post> getPostByCategory(Integer categoryId);
+	List<PostDto> getPostByCategory(Integer categoryId);
 
 	// get all post by user
 
-	List<Post> getPostByUser(Integer useId);
+	List<PostDto> getPostByUser(Integer userId);
 
 	// search posts
-	List<Post> searchPost(String keyword);
+	List<PostDto> searchPost(String keyword);
 
 }
